@@ -1,0 +1,87 @@
+import java.util.Scanner;
+
+public class Urna {
+       
+        private Candidato candidato1;
+        private Candidato candidato2;
+        private int totalVotos;
+        private int vNuloBranco;
+        Scanner teclado = new Scanner(System.in);
+        
+        public Urna(Candidato candidato1, Candidato candidato2){
+            this.candidato1 = candidato1;
+            this.candidato2 = candidato2;
+            this.totalVotos = 0;
+            this.vNuloBranco = 0;
+        }
+        
+        public void votar(int voto){
+            if(voto == 1){
+                candidato1.incrementa();
+                totalVotos += 1;
+            }else if(voto == 2){
+                candidato2.incrementa();
+                totalVotos += 1;
+            }else if(voto == 3){
+                vNuloBranco += 1;
+                totalVotos += 1;
+            }else{
+                System.out.println("Seu voto foi invalido! \nVote de novo!");
+            }
+        }
+        
+        public void exibirTotalVotosNulosBrancos(){
+            System.out.println("Total de votos Brancos/Nulos " + vNuloBranco);
+        }
+        
+        public void exibirTotalGeralVotos(){
+            System.out.println("Total de votos " + totalVotos);
+        }
+        
+        public void  exibirTotalCandidato1(){
+            System.out.println("Total de votos candidato 1 " + candidato1);
+        }
+        
+        public void exibirTotalCandidato2(){
+            System.out.println("Total de votos candidato 2 " + candidato2);
+        }
+        
+        public void exibirDadosCandidatoVencedor(){
+            if(candidato1.getQVotos()>candidato2.getQVotos()){
+                System.out.println("O candidato vencedor e: ");
+                System.out.println(candidato1.getNome());
+                System.out.println(candidato1.getPartido());
+                System.out.println("Com o seguinte total de votos: ");
+                System.out.println(candidato1.getQVotos());
+            }else if(candidato1.getQVotos() == candidato2.getQVotos()){
+                System.out.println("Houve um empate nos votos \nAguarde o segundo turno ");
+        }
+            else{
+                System.out.println("O candidato vencedor e: ");
+                System.out.println(candidato2.getNome());
+                System.out.println(candidato2.getPartido());
+                System.out.println("Com o seguinte total de votos: ");
+                System.out.println(candidato2.getQVotos());
+            }
+            
+            
+        }
+        
+        
+        public void votar(){
+            int voto = 1;
+          while(voto!=0){
+            System.out.println("Digite 1 para votar no candidato 1");
+            System.out.println("Digite 2 para votarno candidato 2");
+            System.out.println("Digite 3 para votar Branco/Nulo");
+            System.out.println("Para finalizar a votação digite 0");
+            System.out.println("Digite o seu voto");
+            voto = teclado.nextInt(); teclado.nextLine();
+            if(voto!=0){
+                this.votar(voto);
+            }
+            
+        }
+    }
+        
+}
