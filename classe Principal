@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class Principal {
+     public static void main (String[] args){
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("Cadastre os dois candidatos a seguir");
+        System.out.println("Digite o nome do candidato 1: ");
+        String  nome = teclado.nextLine();
+        System.out.println("Digite o partido do candidato 1: ");
+        String partido = teclado.nextLine();
+        
+        Candidato candidato1 = new Candidato(nome, partido);
+        
+        System.out.println("Digite o nome do candidato 2: ");
+        nome = teclado.nextLine();
+        System.out.println("Digite o partido do candidato 2: ");
+        partido = teclado.nextLine();
+        
+        Candidato candidato2 = new Candidato(nome,partido);
+        
+        Urna urna = new Urna(candidato1, candidato2);
+       
+       urna.votar();
+       
+       urna.exibirTotalGeralVotos();
+       urna.exibirTotalVotosNulosBrancos();
+       urna.exibirTotalCandidato1();
+       urna.exibirTotalCandidato2();
+       urna.exibirDadosCandidatoVencedor();
+       
+   
+    
+   }
+}
