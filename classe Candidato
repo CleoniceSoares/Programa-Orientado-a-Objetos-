@@ -1,0 +1,28 @@
+
+public class Candidato {
+    private String nome;
+    private String partido;
+    private int qVotos;
+    
+    public Candidato(String nome, String partido){
+        this.nome = nome;
+        this.partido = partido;
+        this.qVotos = 0;
+    }
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public String getPartido(){
+        return partido;
+    }
+    
+    public int getQVotos(){
+        return qVotos;
+    }
+    
+    public void incrementa(){
+        qVotos +=1;
+    }
+}
